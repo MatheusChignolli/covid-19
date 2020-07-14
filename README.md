@@ -1,4 +1,4 @@
-#COVID-19 Chignolli
+# COVID-19 Chignolli
 
 ## Para rodar o projeto basta seguir os passos
 
