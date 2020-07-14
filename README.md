@@ -8,3 +8,4 @@
 ## Tecnologias utilizadas
 
 * create-react-app com TS (command: npx create-reat-app covid-19-chignolli --template typescript)
+* axios (command: npm install --save axios)
