@@ -1,0 +1,42 @@
+@import '../../assets/sass/variables.sass'
+    
+.main-table
+    background: $darkSecondaryColor
+    border-radius: 10px
+    padding: 20px
+
+    h1
+        color: $lightColor
+        margin: 5px 0
+
+    header
+        border-bottom: 2px solid $darkColor
+        display: grid
+        grid-template-columns: 40% 20% 20% 20%
+        margin: 0 20px 10px 0
+        padding: 10px 0
+
+        div
+            color: $lightColor
+            font-size: 18px
+
+    .table-content
+        max-height: 400px
+        overflow: auto
+
+        .table-line
+            border-bottom: 1px solid $darkColor
+            color: $lightColor
+            display: grid
+            grid-template-columns: 40% 20% 20% 20%
+            padding: 3px 0
+
+            .table-item
+                font-size: 14px
+
+        .table-line:first-of-type
+            padding-top: 0
+
+        .table-line:last-of-type
+            border: 0
+            padding-bottom: 0

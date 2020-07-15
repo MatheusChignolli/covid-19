@@ -11,3 +11,7 @@ Referência para criar projeto TS: https://rapidapi.com/blog/create-react-app-ty
 
 * create-react-app com TS (command: npx create-reat-app covid-19-chignolli --template typescript)
 * axios (command: npm install --save axios)
+* Sass (command: npm install node-sass)
+* Bulma Framework (command: npm install bulma -S / npm install --save rbx) -- Não utilizado, mas é uma boa opção
+* Material UI (command: npm install @material-ui/core)
+* Material UI Icons (command: npm install @material-ui/icons);

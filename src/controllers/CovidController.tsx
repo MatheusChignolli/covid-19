@@ -1,15 +1,16 @@
-import React from 'react';
+// import React from 'react';
 import api from '../services/api';
 
 // Importando Interfaces
-import { StateData } from '../interfaces/StateData';
+import { CovidData } from '../interfaces/CovidData';
 
-export const getCasesBrazilStates = async (): Promise<StateData[]> => {
+export const getCasesBrazilStates = async (): Promise<CovidData[]> => {
     return await api.get("/")
         .then(res => {
             return res.data.data;
         });
 };
+
 
 // import {
 // 	CadCidadeRequest,

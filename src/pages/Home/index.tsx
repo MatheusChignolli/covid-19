@@ -1,31 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import { getCasesBrazilStates } from '../../controllers/CovidController';
 
+// Important Componentes
+import Table from '../../components/Table';
+
 // Importando Interfaces
-import { StateData } from '../../interfaces/StateData';
+import { CovidData } from '../../interfaces/CovidData';
 
 // Importando Estilos
 import './styles.css';
 
 const Home: React.FC = () => {
 
-    const [brazilStatesCases, setBrazilStatesCases] = useState<StateData[]>([]);
+    const [allCovidData, setAllCovidaData] = useState<CovidData[]>([]);
 
     useEffect(() => {
-        var teste = getCasesBrazilStates();
-        teste.then((res) => {
-            setBrazilStatesCases(res);
+        var covidData = getCasesBrazilStates();
+        covidData.then((res) => {
+            setAllCovidaData(res);
         });
     }, []);
 
     return (
-        <ul>
-            {
-                brazilStatesCases.map(obj => {
-                    return <li>{obj.state}</li>
-                })
-            }
-        </ul>
+        <>
+            <Table 
+                tableTitle={'Estados Brasileiros'}
+                casesTitle={'Casos'}
+                deathsTitle={'Mortes'}
+                locationTitle={'Estados (UF)'}
+                suspectsTitle={'Suspeitos'}
+                covidData={allCovidData}
+            />
+            <Table 
+                tableTitle={'Estados Brasileiros'}
+                casesTitle={'Casos'}
+                deathsTitle={'Mortes'}
+                locationTitle={'Estados (UF)'}
+                suspectsTitle={'Suspeitos'}
+                covidData={allCovidData}
+            />
+        </>
     )
 }
 
