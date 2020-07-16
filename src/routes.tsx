@@ -1,22 +1,20 @@
 import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
 
-// Importar páginas
 import Home from './pages/Home';
+import World from './pages/World';
 
-// Importar Componentes
 import Navbar from './components/Navbar';
 
 const Routes = () => {
     return(
-        <>
+        <BrowserRouter>
             <Navbar/>
             <main>
-                <BrowserRouter>
-                    <Route component={Home} Path="/" />
-                </BrowserRouter>
-            </main>
-        </>
+                <Route component={Home} path={'/'} exact/>
+                <Route component={World} path={'/world'}/>
+            </main> 
+        </BrowserRouter>
     )
 }
 

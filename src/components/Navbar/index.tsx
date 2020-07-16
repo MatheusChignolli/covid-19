@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './styles.sass';
 
@@ -6,8 +7,8 @@ const Navbar = () => {
     return (
         <nav>
             <ul>
-                <li><a href="/">Brasil</a></li>
-                <li><a href="/">Mundo</a></li>
+                <li><Link to='/'>Brasil</Link></li>
+                <li><Link to='/world'>Mundo</Link></li>
             </ul>
         </nav>
     )

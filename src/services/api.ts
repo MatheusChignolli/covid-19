@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const api = axios.create({
-    baseURL: 'https://covid19-brazil-api.now.sh/api/report/v1',
+export const api = axios.create({
+    baseURL: 'https://covid19-brazil-api.now.sh/',
 });
 
-export default api;
+export const githubApi = 'https://devarthurribeiro.github.io/';
 
 // import API from "./API";
 

@@ -1,4 +1,5 @@
 import React, { useState, /* useEffect */ } from 'react';
+import { sortByBrazilStateName } from '../../services/Methods/ArrayFormatter';
 
 // Importando Interfaces
 import { TableCovidData } from '../../interfaces/TableCovidData';
@@ -36,7 +37,7 @@ const Table: React.FC<TableCovidData> = (props) => {
             <div className="table-content">
                 {
                     typeof covidData !== 'undefined' ?
-                        props.covidData.map(obj => {
+                        sortByBrazilStateName(props.covidData).map(obj => {
                             return <TableItem
                                         key={'table-item-' + obj.uid} 
                                         uid={obj.uid} 

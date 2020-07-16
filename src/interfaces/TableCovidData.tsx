@@ -2,10 +2,10 @@
 import { CovidData } from './CovidData';
 
 export interface TableCovidData {
-    tableTitle: String,
-    locationTitle: String,
-    casesTitle: String,
-    deathsTitle: String,
-    suspectsTitle: String,
+    tableTitle: string,
+    locationTitle: string,
+    casesTitle: string,
+    deathsTitle: string,
+    suspectsTitle: string,
     covidData: CovidData[]
 }
