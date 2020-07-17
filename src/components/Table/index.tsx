@@ -1,8 +1,10 @@
-import React, { useState, /* useEffect */ } from 'react';
+import React, { ChangeEvent, useState, useEffect } from 'react';
 import { sortByBrazilStateName } from '../../services/Methods/ArrayFormatter';
 
 // Importando Interfaces
 import { TableCovidData } from '../../interfaces/TableCovidData';
+import { CovidData } from '../../interfaces/CovidData';
+import _ from 'lodash';
 
 import TableItem from './TableItem';
 
@@ -10,7 +12,9 @@ import './styles.sass';
 
 const Table: React.FC<TableCovidData> = (props) => {
 
-    const [tableData, /* setTableData */] = useState<TableCovidData>(props);
+    const [filteredWord, setFilteredWorld] = useState<string>('');
+    const [tableData, setTableData ] = useState<TableCovidData>(props);
+    const [filteredTableData,  setFilteredTableData] = useState<CovidData[]>([]);;
 
     const {
         tableTitle,
@@ -19,15 +23,37 @@ const Table: React.FC<TableCovidData> = (props) => {
         deathsTitle,
         suspectsTitle,
         covidData,
-    } = tableData;
+    } = tableData
+    
 
-    // useEffect(() => {
-    //     setTableData({...tableData, covidData: props.covidData})
-    // }, [props])
+    useEffect(() => {
+        setFilteredTableData(props.covidData);
+        setTableData({...tableData, covidData: props.covidData});
+    }, [props])
+
+    function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
+        var inputText = e.target.value;
+        setFilteredWorld(inputText);
+        inputText = _.kebabCase(inputText);
+
+        var filteredData = covidData.filter(obj => _.kebabCase(obj.state).includes(inputText));
+
+        setFilteredTableData(filteredData);
+    }
 
     return (
         <section className="main-table">
             <h1>{tableTitle}</h1>
+            <div className="input-group">
+                <label htmlFor="filter-input">Filtro:</label>
+                <input 
+                    id="filter-input"
+                    name="filter-input"
+                    type="text"
+                    onChange={handleInputChange}
+                    value={filteredWord}
+                />
+            </div>
             <header>
                 <div>{locationTitle}</div>
                 <div>{casesTitle}</div>
@@ -36,8 +62,8 @@ const Table: React.FC<TableCovidData> = (props) => {
             </header>
             <div className="table-content">
                 {
-                    typeof covidData !== 'undefined' ?
-                        sortByBrazilStateName(props.covidData).map(obj => {
+                    typeof filteredTableData !== 'undefined' ?
+                        sortByBrazilStateName(filteredTableData).map(obj => {
                             return <TableItem
                                         key={'table-item-' + obj.uid} 
                                         uid={obj.uid} 
