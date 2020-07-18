@@ -15,4 +15,5 @@ Referência para criar projeto TS: https://rapidapi.com/blog/create-react-app-ty
 * Bulma Framework (command: npm install bulma -S / npm install --save rbx) -- Não utilizado, mas é uma boa opção
 * Material UI (command: npm install @material-ui/core)
 * Material UI Icons (command: npm install @material-ui/icons)
-* lodash (command: npm i --save lodash)
+* Lodash (command: npm i --save lodash)
+* Country Flasgs (countryflags.io)

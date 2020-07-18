@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState, useEffect } from 'react';
 import { sortByCountryName } from '../../services/Methods/ArrayFormatter';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import _ from 'lodash';
 
 // Importando Interfaces
@@ -12,6 +13,7 @@ import './styles.sass';
 
 const Countries: React.FC<TableCountriesCovidData> = (props) => {
 
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
     const [filteredWord, setFilteredWorld] = useState<string>('');
     const [tableData, setTableData] = useState<TableCountriesCovidData>(props);
     const [filteredTableData,  setFilteredTableData] = useState<CountriesCovidData[]>([]);;
@@ -30,6 +32,12 @@ const Countries: React.FC<TableCountriesCovidData> = (props) => {
         setFilteredTableData(props.covidData);
         setTableData({...tableData, covidData: props.covidData});
     }, [props])
+
+    useEffect(() => {
+        if(covidData.length > 0) {
+            setIsLoaded(true);
+        }
+    }, [covidData])
 
     function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
         var inputText = e.target.value;
@@ -62,20 +70,25 @@ const Countries: React.FC<TableCountriesCovidData> = (props) => {
                 <div>{deathsTitle}</div>
             </header>
             <div className="table-content">
-                {
-                    typeof filteredTableData !== 'undefined' ?
-                        sortByCountryName(filteredTableData).map(obj => {
-                            return <CountriesTableItem
-                                        key={'table-item-' + _.kebabCase(obj.country)} 
-                                        confirmed={obj.confirmed}
-                                        cases={obj.cases}
-                                        country={obj.country}
-                                        deaths={obj.deaths}
-                                        recovered={obj.recovered}
-                                        updated_at={obj.updated_at}
-                                    />
-                        })
-                    : null
+                {   isLoaded ? 
+                        typeof filteredTableData !== 'undefined' ?
+                            sortByCountryName(filteredTableData).map(obj => {
+                                return <CountriesTableItem
+                                            key={'table-item-' + _.kebabCase(obj.country)} 
+                                            confirmed={obj.confirmed}
+                                            cases={obj.cases}
+                                            country={obj.country}
+                                            deaths={obj.deaths}
+                                            recovered={obj.recovered}
+                                            updated_at={obj.updated_at}
+                                        />
+                            })
+                        : null
+                    : (
+                        <div className="loader-component">
+                            <CircularProgress/>
+                        </div>
+                    )
                 }
             </div>
         </section>

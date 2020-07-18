@@ -6,6 +6,8 @@ export const api = axios.create({
 
 export const githubApi = 'https://devarthurribeiro.github.io/';
 
+export const countryFlagsUrl = 'https://www.countryflags.io/';
+
 // import API from "./API";
 
 // // WS006

@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState, useEffect } from 'react';
 import { sortByBrazilStateName } from '../../services/Methods/ArrayFormatter';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 // Importando Interfaces
 import { TableCovidData } from '../../interfaces/TableCovidData';
@@ -12,6 +13,7 @@ import './styles.sass';
 
 const Table: React.FC<TableCovidData> = (props) => {
 
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
     const [filteredWord, setFilteredWorld] = useState<string>('');
     const [tableData, setTableData ] = useState<TableCovidData>(props);
     const [filteredTableData,  setFilteredTableData] = useState<CovidData[]>([]);;
@@ -30,6 +32,12 @@ const Table: React.FC<TableCovidData> = (props) => {
         setFilteredTableData(props.covidData);
         setTableData({...tableData, covidData: props.covidData});
     }, [props])
+
+    useEffect(() => {
+        if(covidData.length > 0) {
+            setIsLoaded(true);
+        }
+    }, [covidData])
 
     function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
         var inputText = e.target.value;
@@ -61,22 +69,27 @@ const Table: React.FC<TableCovidData> = (props) => {
                 <div>{suspectsTitle}</div>
             </header>
             <div className="table-content">
-                {
-                    typeof filteredTableData !== 'undefined' ?
-                        sortByBrazilStateName(filteredTableData).map(obj => {
-                            return <TableItem
-                                        key={'table-item-' + obj.uid} 
-                                        uid={obj.uid} 
-                                        uf={obj.uf} 
-                                        state={obj.state} 
-                                        cases={obj.cases} 
-                                        deaths={obj.deaths} 
-                                        suspects={obj.suspects} 
-                                        refuses={obj.refuses} 
-                                        datetime={obj.datetime}
-                                    />
-                        })
-                    : null
+                {   isLoaded ?
+                        typeof filteredTableData !== 'undefined' ?
+                            sortByBrazilStateName(filteredTableData).map(obj => {
+                                return <TableItem
+                                            key={'table-item-' + obj.uid} 
+                                            uid={obj.uid} 
+                                            uf={obj.uf} 
+                                            state={obj.state} 
+                                            cases={obj.cases} 
+                                            deaths={obj.deaths} 
+                                            suspects={obj.suspects} 
+                                            refuses={obj.refuses} 
+                                            datetime={obj.datetime}
+                                        />
+                            })
+                        : null
+                    : (
+                        <div className="loader-component">
+                            <CircularProgress/>
+                        </div>
+                    )
                 }
             </div>
         </section>
