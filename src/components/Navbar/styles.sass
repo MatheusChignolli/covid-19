@@ -1,28 +1,49 @@
 @import '../../assets/sass/variables.sass'
 
 nav 
-    align-items: center
     background-color: $darkSecondaryColor
-    display: flex
-    justify-content: center
+    display: grid
+    grid-template-columns: 20% 80%
 
+    h2
+        color: $lightColor
+        text-align: center
+
+    .top-menu
+        align-items: center
+        display: flex
+        justify-content: center
+        
     ul
         list-style: none
         list-style-type: none
+        height: 100%
         margin: 0
         padding: 0
+        width: 100%
 
     li
+        align-items: center
+        display: flex
         float: left
-        padding: 20px 0
+        justify-content: center
+        height: 100%
+        transition: .5s
 
         a
+            align-items: center
             color: $lightColor
+            display: flex
             font-size: 20px
-            padding: 20px
+            height: 100%
+            justify-content: center
+            padding: 0 20px
             text-decoration: none
             transition: .5s
-        
-        a:hover
-            background: $lightColor
-            color: $darkSecondaryColor
+
+    li:hover
+        background: $lightColor
+        color: $darkSecondaryColor
+
+        a
+            color: $darkColor
