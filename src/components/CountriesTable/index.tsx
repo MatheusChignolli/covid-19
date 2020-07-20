@@ -30,7 +30,7 @@ const Countries: React.FC<TableCountriesCovidData> = (props) => {
 
     useEffect(() => {
         setFilteredTableData(props.covidData);
-        setTableData({...tableData, covidData: props.covidData});
+        setTableData(props);
     }, [props])
 
     useEffect(() => {

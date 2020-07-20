@@ -1,6 +1,6 @@
 // import React from 'react';
 
-function formatNumber(n: number, p: number, ts: string, dp: string) {
+function numberFormatter(n: number | undefined, p: number, ts: string, dp: string) {
     var t = [];
 
     var number;
@@ -8,7 +8,7 @@ function formatNumber(n: number, p: number, ts: string, dp: string) {
     if(n === null) {
       return '-';
     } else {
-      number = n.toString();
+      number = typeof n === 'undefined' ? 0 : n.toString();
     }
 
     // Get arguments, set defaults
@@ -28,4 +28,4 @@ function formatNumber(n: number, p: number, ts: string, dp: string) {
     return t.join(dp) + (numberArray[1]? dp + numberArray[1] : '');
   }
 
-  export default formatNumber;
+  export default numberFormatter;

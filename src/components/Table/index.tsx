@@ -30,7 +30,7 @@ const Table: React.FC<TableCovidData> = (props) => {
 
     useEffect(() => {
         setFilteredTableData(props.covidData);
-        setTableData({...tableData, covidData: props.covidData});
+        setTableData(props);
     }, [props])
 
     useEffect(() => {

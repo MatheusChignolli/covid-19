@@ -3,6 +3,7 @@ import { getCountriesCases } from '../../controllers/CovidController';
 
 // Important Componentes
 import CountriesTable from '../../components/CountriesTable';
+import Header from '../../components/Header';
 
 // Importando Interfaces
 import { CountriesCovidData } from '../../interfaces/CountriesCovidData';
@@ -13,6 +14,7 @@ import './styles.sass';
 const World: React.FC = () => {
 
     const [allCovidData, setAllCovidaData] = useState<CountriesCovidData[]>([]);
+    const [headerCovidData, setHeaderCovidData] = useState<CountriesCovidData | undefined>();
 
     useEffect(() => {
         var covidData = getCountriesCases();
@@ -21,16 +23,51 @@ const World: React.FC = () => {
         });
     }, []);
 
-    return(            
-        <CountriesTable
-            locationTitle={'Países'}
-            tableTitle={'Casos no Mundo'}
-            confirmedTitle={'Total'}
-            casesTitle={'Ativos'}
-            recoveredTitle={'Curados'}
-            deathsTitle={'Mortes'}
-            covidData={allCovidData}
-        />
+    useEffect(() => {
+
+        var cases = 0;
+        var confirmed = 0;
+        var deaths = 0;
+        var recovered = 0;
+
+        allCovidData.forEach(obj => {
+            cases += obj.cases;
+            confirmed += obj.confirmed;
+            deaths += obj.deaths;
+            recovered += obj.recovered;
+        });
+
+        setHeaderCovidData({
+            country: "Mundo",
+            cases: cases,
+            confirmed: confirmed,
+            deaths: deaths,
+            recovered: recovered,
+            updated_at: allCovidData[0] ? allCovidData[0].updated_at : '',
+        });
+    }, [allCovidData])
+
+    return(  
+        <>
+            <Header
+                mainTitle={'Mundo'}
+                casesTitle={'😷 Casos Ativos'}
+                deathsTitle={'☠️ Mortes'}
+                confirmedTitle={'🟥 Total'}
+                recoveredTitle={'😅 Recuperados'}
+                updatedAtTitle={'Atualizado em'}
+                mainData={headerCovidData}
+            />   
+            <CountriesTable
+                locationTitle={'Países'}
+                tableTitle={'Casos no Mundo'}
+                confirmedTitle={'Total'}
+                casesTitle={'Ativos'}
+                recoveredTitle={'Curados'}
+                deathsTitle={'Mortes'}
+                covidData={allCovidData}
+            />
+        </>       
     )
 }
 

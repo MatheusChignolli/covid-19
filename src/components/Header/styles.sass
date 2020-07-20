@@ -1,0 +1,35 @@
+@import '../../assets/sass/variables.sass';
+    
+header.main-header
+    background: $darkSecondaryColor
+    border-radius: 10px
+    padding: 20px
+    position: relative
+
+    h1
+        color: $lightColor
+        margin: 0 0 20px 0
+        text-align: center
+
+    .main-data
+        display: grid
+        grid-template-columns: repeat(4, 1fr)
+        text-align: center
+
+        .main-data-item
+
+            h2
+                color: $lightColor
+                font-size: 20px
+                font-weight: 400
+                margin: 10px 0
+
+        .main-data-item + .main-data-item
+            border-left: 2px solid $darkColor
+
+    .main-updated-at
+        color: $lightColor
+        margin-top: 20px
+        position: absolute
+        right: 20px
+        top: 0

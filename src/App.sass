@@ -8,7 +8,14 @@ main
     display: grid
     grid-gap: 40px
     grid-template-columns: repeat(2, 1fr)
+    grid-template-areas: 'header-area header-area' 'section-area .'
     padding: 40px
+
+    header
+        grid-area: header-area
+    
+    section.main-table
+        grid-area: section-area
 
     .input-group
 
