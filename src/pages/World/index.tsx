@@ -15,6 +15,7 @@ const World: React.FC = () => {
 
     const [allCovidData, setAllCovidaData] = useState<CountriesCovidData[]>([]);
     const [headerCovidData, setHeaderCovidData] = useState<CountriesCovidData | undefined>();
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
     useEffect(() => {
         var covidData = getCountriesCases();
@@ -46,6 +47,8 @@ const World: React.FC = () => {
             updated_at: allCovidData[0] ? allCovidData[0].updated_at : '',
             updateChart: () => {},
         });
+
+        if(allCovidData[0]) setIsLoaded(true);
     }, [allCovidData])
 
     return(  
@@ -58,6 +61,7 @@ const World: React.FC = () => {
                 recoveredTitle={'😅 Recuperados'}
                 updatedAtTitle={'Atualizado em'}
                 mainData={headerCovidData}
+                isLoaded={isLoaded}
             />   
             <CountriesTable
                 locationTitle={'Países'}

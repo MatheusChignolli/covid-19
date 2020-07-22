@@ -16,11 +16,13 @@ const Home: React.FC = () => {
 
     const [allCovidData, setAllCovidaData] = useState<CovidData[]>([]);
     const [brazilCovidData, setBrazilCovidData] = useState<CountriesCovidData | undefined>();
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
     useEffect(() => {
         var covidData = getBrazilStatesCases();
         covidData.then((res) => {
             setAllCovidaData(res);
+            setIsLoaded(true);
         });
     }, []);
 
@@ -28,6 +30,7 @@ const Home: React.FC = () => {
         var brazilCovidData = getBrazilCases();
         brazilCovidData.then((res) => {
             setBrazilCovidData(res);
+            setIsLoaded(true);
         })
     }, [])
 
@@ -41,6 +44,7 @@ const Home: React.FC = () => {
                 recoveredTitle={'😅 Recuperados'}
                 updatedAtTitle={'Atualizado em'}
                 mainData={brazilCovidData}
+                isLoaded={isLoaded}
             />
             <Table 
                 tableTitle={'Estados Brasileiros'}

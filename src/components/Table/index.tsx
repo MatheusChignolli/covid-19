@@ -75,7 +75,7 @@ const Table: React.FC<TableCovidData> = (props) => {
             <section className="main-table">
                 <h1>{tableTitle}</h1>
                 <div className="input-group">
-                    <label htmlFor="filter-input">Filtro:</label>
+                    <label htmlFor="filter-input">Pesquisar:</label>
                     <input 
                         id="filter-input"
                         name="filter-input"

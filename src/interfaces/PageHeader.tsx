@@ -8,4 +8,5 @@ export interface PageHeader {
     recoveredTitle: string,
     updatedAtTitle: string,
     mainData: CountriesCovidData | undefined,
+    isLoaded: boolean,
 }
