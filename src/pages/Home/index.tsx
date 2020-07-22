@@ -44,7 +44,7 @@ const Home: React.FC = () => {
             />
             <Table 
                 tableTitle={'Estados Brasileiros'}
-                casesTitle={'Casos Ativos'}
+                casesTitle={'Confirmados'}
                 deathsTitle={'Mortes'}
                 locationTitle={'Estados (UF)'}
                 suspectsTitle={'Suspeitos'}

@@ -17,3 +17,4 @@ Referência para criar projeto TS: https://rapidapi.com/blog/create-react-app-ty
 * Material UI Icons (command: npm install @material-ui/icons)
 * Lodash (command: npm i --save lodash)
 * Country Flasgs (countryflags.io)
+* CanvasJS (command: npm i canvasjs-react-charts) -> https://canvasjs.com/

@@ -1,13 +1,16 @@
 import React, { ChangeEvent, useState, useEffect } from 'react';
 import { sortByBrazilStateName } from '../../services/Methods/ArrayFormatter';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import _ from 'lodash';
+
 
 // Importando Interfaces
 import { TableCovidData } from '../../interfaces/TableCovidData';
 import { CovidData } from '../../interfaces/CovidData';
-import _ from 'lodash';
+import { ChartData } from '../../interfaces/ChartData';
 
 import TableItem from './TableItem';
+import Chart from '../Chart';
 
 import './styles.sass';
 
@@ -17,6 +20,13 @@ const Table: React.FC<TableCovidData> = (props) => {
     const [filteredWord, setFilteredWorld] = useState<string>('');
     const [tableData, setTableData ] = useState<TableCovidData>(props);
     const [filteredTableData,  setFilteredTableData] = useState<CovidData[]>([]);;
+    const [chartData, setChartData] = useState<ChartData>({
+        state: '',
+        uf: 'SP',
+        cases: 0,
+        deaths: 0,
+        suspects: 0,
+    });
 
     const {
         tableTitle,
@@ -25,9 +35,8 @@ const Table: React.FC<TableCovidData> = (props) => {
         deathsTitle,
         suspectsTitle,
         covidData,
-    } = tableData
+    } = tableData;
     
-
     useEffect(() => {
         setFilteredTableData(props.covidData);
         setTableData(props);
@@ -49,50 +58,79 @@ const Table: React.FC<TableCovidData> = (props) => {
         setFilteredTableData(filteredData);
     }
 
+    function updateChart(state: string, uf: string, cases: number, deaths: number, suspects: number) {
+        setChartData({
+            state,
+            uf,
+            cases,
+            deaths,
+            suspects
+        })
+    }
+
     return (
-        <section className="main-table">
-            <h1>{tableTitle}</h1>
-            <div className="input-group">
-                <label htmlFor="filter-input">Filtro:</label>
-                <input 
-                    id="filter-input"
-                    name="filter-input"
-                    type="text"
-                    onChange={handleInputChange}
-                    value={filteredWord}
-                />
-            </div>
-            <header>
-                <div>{locationTitle}</div>
-                <div>{casesTitle}</div>
-                <div>{deathsTitle}</div>
-                <div>{suspectsTitle}</div>
-            </header>
-            <div className="table-content">
-                {   isLoaded ?
-                        typeof filteredTableData !== 'undefined' ?
-                            sortByBrazilStateName(filteredTableData).map(obj => {
-                                return <TableItem
-                                            key={'table-item-' + obj.uid} 
-                                            uid={obj.uid} 
-                                            uf={obj.uf} 
-                                            state={obj.state} 
-                                            cases={obj.cases} 
-                                            deaths={obj.deaths} 
-                                            suspects={obj.suspects} 
-                                            refuses={obj.refuses} 
-                                            datetime={obj.datetime}
-                                        />
-                            })
-                        : null
-                    : (
+        <>
+            <section className="main-table">
+                <h1>{tableTitle}</h1>
+                <div className="input-group">
+                    <label htmlFor="filter-input">Filtro:</label>
+                    <input 
+                        id="filter-input"
+                        name="filter-input"
+                        type="text"
+                        onChange={handleInputChange}
+                        value={filteredWord}
+                    />
+                </div>
+                <header>
+                    <div>{locationTitle}</div>
+                    <div>{casesTitle}</div>
+                    <div>{deathsTitle}</div>
+                    <div>{suspectsTitle}</div>
+                </header>
+                <div className="table-content">
+                    {   isLoaded ?
+                            typeof filteredTableData !== 'undefined' ?
+                                sortByBrazilStateName(filteredTableData).map(obj => {
+                                    return <TableItem
+                                                key={'table-item-' + obj.uid} 
+                                                uid={obj.uid} 
+                                                uf={obj.uf} 
+                                                state={obj.state} 
+                                                cases={obj.cases} 
+                                                deaths={obj.deaths} 
+                                                suspects={obj.suspects} 
+                                                refuses={obj.refuses} 
+                                                datetime={obj.datetime}
+                                                updateChart={() => {updateChart(obj.state, obj.uf, obj.cases, obj.deaths, obj.suspects)}}
+                                            />
+                                })
+                            : null
+                        : (
+                            <div className="loader-component">
+                                <CircularProgress/>
+                            </div>
+                        )
+                    }
+                </div>
+            </section>
+            <section className="main-chart">
+                {   isLoaded ? (
+                        <Chart
+                            state={chartData?.state}
+                            uf={chartData?.uf}
+                            cases={chartData?.cases}
+                            deaths={chartData?.deaths}
+                            suspects={chartData?.suspects}
+                        />
+                    ) : (
                         <div className="loader-component">
                             <CircularProgress/>
                         </div>
                     )
                 }
-            </div>
-        </section>
+            </section>
+        </>
     )
 }
 

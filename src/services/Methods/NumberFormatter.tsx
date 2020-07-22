@@ -1,7 +1,7 @@
 // import React from 'react';
 
 function numberFormatter(n: number | undefined, p: number, ts: string, dp: string) {
-    var t = [];
+    var t: string[] = [];
 
     var number;
 

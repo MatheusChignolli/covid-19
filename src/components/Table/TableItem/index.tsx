@@ -18,14 +18,31 @@ const TableItem: React.FC<CovidData> = (props) => {
         suspects,
         // refuses,
         // datetime,
+        updateChart
     }/*, setStateData*/] = useState<CovidData>(props);
 
     useEffect(() => {
         setStateFlag(githubApi + `/covid19-brazil-api/static/flags/${uf}.png`);
     }, [uf]);
 
+    useEffect(() => {
+        if (props.uf === 'SP') {
+            updateChart()
+            updateIsSelected()
+        };
+    }, [])
+
+    function updateIsSelected() {
+        const isSelectedItems = document.getElementsByClassName('selected');
+        for(var i = 0; i < isSelectedItems.length; i++) {
+            isSelectedItems[i].classList.remove("selected");
+        }
+        const isSelectedItem = document.getElementById("table-item-" + uf);
+        if (isSelectedItem) isSelectedItem.classList.add("selected");
+    }
+
     return (
-        <div className="table-line">
+        <div id={"table-item-" + uf} className={"table-line"} onClick={() => {updateChart(); updateIsSelected();}}>
             <div className="table-item"><img src={stateFlag} alt={uf + ' Flag'}/>{state} ({uf})</div>
             <div className="table-item">{NumberFormatter(cases, 0, '', '.')}</div>
             <div className="table-item">{NumberFormatter(deaths, 0, '', '.')}</div>

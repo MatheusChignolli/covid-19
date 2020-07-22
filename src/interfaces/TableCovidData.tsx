@@ -7,5 +7,5 @@ export interface TableCovidData {
     casesTitle: string,
     deathsTitle: string,
     suspectsTitle: string,
-    covidData: CovidData[]
+    covidData: CovidData[],
 }

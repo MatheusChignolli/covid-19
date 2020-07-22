@@ -7,4 +7,5 @@ export interface CovidData {
     suspects: number,
     uf: string,
     uid: number,
+    updateChart: Function,
 }

@@ -30,6 +30,7 @@
             display: grid
             grid-template-columns: 40% 20% 20% 20%
             padding: 3px 0
+            transition: .15s
 
             .table-item
                 align-items: center
@@ -41,12 +42,15 @@
                     margin-right: 10px
                     width: 20px
 
-        .table-line:first-of-type
-            padding-top: 0
+        .table-line.selected
+            background: $secondaryColor
+
+        .table-line:hover
+            background: $secondaryColor
+            cursor: pointer
 
         .table-line:last-of-type
             border: 0
-            padding-bottom: 0
 
         .loader-component
             align-items: center
