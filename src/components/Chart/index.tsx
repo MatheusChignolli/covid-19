@@ -1,5 +1,6 @@
 import React from 'react';
 import { CanvasJSChart } from 'canvasjs-react-charts';
+import { setCountryFlag } from '../../services/Methods/CountryFlag';
 
 import { ChartData } from '../../interfaces/ChartData';
 
@@ -16,7 +17,12 @@ const Chart: React.FC<ChartData> = (props) => {
         data: [
         {
             type: "column",
-            dataPoints: [
+            dataPoints: props.isWorld ? [
+                { label: "Total",  y: props.uf },
+                { label: "Ativos", y: props.cases },
+                { label: "Curados", y: props.suspects },
+                { label: "Mortes", y: props.deaths },
+            ] : [
                 { label: "Confirmados",  y: props.cases },
                 { label: "Mortes", y: props.deaths },
                 { label: "Suspeitos", y: props.suspects },
@@ -28,8 +34,19 @@ const Chart: React.FC<ChartData> = (props) => {
     return(
         <>
             <div className="chart-title">
-                <img alt={props.uf + ' Flag'} src={'https://devarthurribeiro.github.io//covid19-brazil-api/static/flags/' + props.uf + '.png'}/>
-                <h1>{props.state} ({props.uf})</h1>
+                {
+                    props.isWorld ? (
+                        <>
+                            <img alt={props.uf + ' Flag'} src={setCountryFlag(props.state)}/>
+                            <h1>{props.state}</h1>
+                        </>
+                    ) : (
+                        <>
+                            <img alt={props.uf + ' Flag'} src={'https://devarthurribeiro.github.io//covid19-brazil-api/static/flags/' + props.uf + '.png'}/>
+                            <h1>{props.state} ({props.uf})</h1>
+                        </>
+                    )
+                }
             </div>
             <CanvasJSChart options = {options}/>
         </>

@@ -44,6 +44,7 @@ const World: React.FC = () => {
             deaths: deaths,
             recovered: recovered,
             updated_at: allCovidData[0] ? allCovidData[0].updated_at : '',
+            updateChart: () => {},
         });
     }, [allCovidData])
 

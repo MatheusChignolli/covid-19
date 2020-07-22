@@ -26,6 +26,7 @@ const Table: React.FC<TableCovidData> = (props) => {
         cases: 0,
         deaths: 0,
         suspects: 0,
+        isWorld: false,
     });
 
     const {
@@ -58,13 +59,14 @@ const Table: React.FC<TableCovidData> = (props) => {
         setFilteredTableData(filteredData);
     }
 
-    function updateChart(state: string, uf: string, cases: number, deaths: number, suspects: number) {
+    function updateChart(state: string, uf: string, cases: number, deaths: number, suspects: number, isWorld: boolean) {
         setChartData({
             state,
             uf,
             cases,
             deaths,
-            suspects
+            suspects,
+            isWorld
         })
     }
 
@@ -102,7 +104,7 @@ const Table: React.FC<TableCovidData> = (props) => {
                                                 suspects={obj.suspects} 
                                                 refuses={obj.refuses} 
                                                 datetime={obj.datetime}
-                                                updateChart={() => {updateChart(obj.state, obj.uf, obj.cases, obj.deaths, obj.suspects)}}
+                                                updateChart={() => {updateChart(obj.state, obj.uf, obj.cases, obj.deaths, obj.suspects, false)}}
                                             />
                                 })
                             : null
@@ -122,6 +124,7 @@ const Table: React.FC<TableCovidData> = (props) => {
                             cases={chartData?.cases}
                             deaths={chartData?.deaths}
                             suspects={chartData?.suspects}
+                            isWorld={false}
                         />
                     ) : (
                         <div className="loader-component">

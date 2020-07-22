@@ -5,4 +5,5 @@ export interface CountriesCovidData {
     deaths: number,
     recovered: number,
     updated_at: string,
+    updateChart: Function,
 }

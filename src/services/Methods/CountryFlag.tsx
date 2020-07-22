@@ -287,7 +287,7 @@ var countries = [
     ["ZW", "Zimbabwe"]
 ];
 
-export function setCountryFlag(countryName: string): string {
+export function setCountryFlag(countryName: string | undefined): string | undefined {
     var flagUrl = '';
 
     countries.forEach(country => {
