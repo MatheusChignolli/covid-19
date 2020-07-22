@@ -1,0 +1,52 @@
+@import '../../assets/sass/variables.sass'
+
+footer
+    background-color: $darkSecondaryColor
+    padding: 10px 0
+
+    .footer-data
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+        width: 100%
+
+        .footer-item
+            padding: 0 20px
+            text-align: center
+
+            h4
+                color: $lightColor
+                font-size: 24px
+                margin: 0 0 10px 0
+
+            ul
+                align-items: center
+                display: flex
+                list-style: none
+                justify-content: center
+                margin: 0
+                padding: 0
+                text-align: center
+
+                li
+                    border-radius: 5px
+                    float: left
+                    padding: 5px 5px 3px 5px
+                    transition: .5s
+
+                    a
+
+                        svg
+                            color: $lightColor
+                            font-size: 22px
+                            transition: .5s
+
+                li:hover
+                    background: $lightColor
+
+                    a
+
+                        svg
+                            color: $primaryColor
+
+            li + li
+                margin-left: 10px

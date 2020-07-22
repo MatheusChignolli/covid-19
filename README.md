@@ -18,8 +18,8 @@ Referência para criar projeto TS: https://rapidapi.com/blog/create-react-app-ty
 * Lodash (command: npm i --save lodash)
 * Country Flasgs (countryflags.io)
 * CanvasJS (command: npm i canvasjs-react-charts) -> https://canvasjs.com/
-* SVGR (command: npm i @svgr/webpack)
-
+* React Icons (command: npm install react-icons --save)
+----------------------------------------------------------------
 * Webpack (command: npm install --save-dev webpack webpack-cli webpack-dev-server)
 * Babel (command: npm install --save-dev @babel/core babel-loader @babel/preset-env @babel/preset-react)
 * Image Loader (command: npm install --save-dev file-loader url-loader)
