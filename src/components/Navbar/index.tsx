@@ -6,7 +6,10 @@ import './styles.sass';
 const Navbar = () => {
     return (
         <nav>
-            <h2>Relatório Covid-19</h2>
+            <div className="top-title">
+                <img src="/images/covid-logo.png" alt="teste"/>
+                <h2> Relatório Covid-19</h2>
+            </div>
             <div className="top-menu">
                 <ul>
                     <li><Link to='/'>Brasil</Link></li>
