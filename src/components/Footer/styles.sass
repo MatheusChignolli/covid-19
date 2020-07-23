@@ -13,6 +13,20 @@ footer
             padding: 0 20px
             text-align: center
 
+            div
+                align-items: center
+                display: flex
+                height: 100%
+                justify-content: center
+
+                p
+                    color: $lightColor
+                    margin: 0
+
+                    a
+                        color: $lightColor
+                        text-decoration: none
+
             h4
                 color: $lightColor
                 font-size: 24px
@@ -50,3 +64,20 @@ footer
 
             li + li
                 margin-left: 10px
+
+        .footer-item + .footer-item
+            border-left: 1px solid $darkColor
+
+@media (max-width:991px)
+
+    footer
+
+        .footer-data
+            grid-template-columns: repeat(1, 1fr)
+
+            .footer-item
+                padding: 20px
+
+            .footer-item + .footer-item
+                border-left: 0
+                border-top: 1px solid $darkColor

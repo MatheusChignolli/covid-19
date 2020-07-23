@@ -16,10 +16,15 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div className="footer-item">
-
+                    <div>
+                        <p>2020 © <a href="https://chignolli.com.br">Chignolli Desenvolvimento</a></p>
+                    </div>
                 </div>
                 <div className="footer-item">
-
+                    <h4>Open Source Projetct</h4>
+                    <ul>
+                        <li><a target="_blank" rel="noopener noreferrer" title="Repositório" href="https://github.com/MatheusChignolli/covid-19"><FaGithub/></a></li>
+                    </ul>
                 </div>
             </div>
         </footer>
