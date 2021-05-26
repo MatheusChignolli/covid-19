@@ -107,7 +107,10 @@ const Countries: React.FC<TableCountriesCovidData> = (props) => {
                     confirmed={obj.confirmed}
                     cases={obj.cases}
                     country={obj.country}
-                    deaths={obj.deaths> {
+                    deaths={obj.deaths}
+                    recovered={obj.recovered}
+                    updated_at={obj.updated_at}
+                    updateChart={() => {
                       updateChart(
                         obj.country,
                         obj.confirmed,

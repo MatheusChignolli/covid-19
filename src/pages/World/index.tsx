@@ -3,7 +3,6 @@ import { getCountriesCases } from '../../controllers/CovidController'
 import CountriesTable from '../../components/CountriesTable'
 import Header from '../../components/Header'
 import { CountriesCovidData } from '../../interfaces/CountriesCovidData'
-import './styles.sass'
 
 const World: React.FC = () => {
   const [allCovidData, setAllCovidaData] = useState<CountriesCovidData[]>([])
