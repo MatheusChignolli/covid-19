@@ -5,7 +5,7 @@ import Header from '../../components/Header'
 import { CountriesCovidData } from '../../interfaces/CountriesCovidData'
 
 const World: React.FC = () => {
-  const [allCovidData, setAllCovidaData] = useState<CountriesCovidData[]>([])
+  const [allCovidData, setAllCovidData] = useState<CountriesCovidData[]>([])
   const [headerCovidData, setHeaderCovidData] =
     useState<CountriesCovidData | undefined>()
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
@@ -13,7 +13,7 @@ const World: React.FC = () => {
   useEffect(() => {
     const covidData = getCountriesCases()
     covidData.then((res) => {
-      setAllCovidaData(res)
+      setAllCovidData(res)
     })
   }, [])
 
