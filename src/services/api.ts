@@ -1,12 +1,12 @@
-import axios from 'axios';
+import axios from 'axios'
 
 export const api = axios.create({
-    baseURL: 'https://covid19-brazil-api.now.sh/',
-});
+  baseURL: 'https://covid19-brazil-api.now.sh/',
+})
 
-export const githubApi = 'https://devarthurribeiro.github.io/';
+export const githubApi = 'https://devarthurribeiro.github.io/'
 
-export const countryFlagsUrl = 'https://www.countryflags.io/';
+export const countryFlagsUrl = 'https://www.countryflags.io/'
 
 // import API from "./API";
 
