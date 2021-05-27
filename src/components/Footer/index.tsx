@@ -1,71 +1,39 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { FaGithub, FaLinkedin, FaUserAstronaut } from 'react-icons/fa'
-import './styles.sass'
+import { Copyright, Credits, IconLink, Link } from './styles'
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
-    <footer>
-      <div className="footer-data">
-        <div className="footer-item">
-          <h4>Contato</h4>
-          <ul>
-            <li>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Github"
-                href="https://github.com/MatheusChignolli"
-              >
-                <FaGithub />
-              </a>
-            </li>
-            <li>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                title="LinkedIn"
-                href="https://www.linkedin.com/in/matheus-richard-chignolli-a0115b155/"
-              >
-                <FaLinkedin />
-              </a>
-            </li>
-            <li>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Site"
-                href="https://chignolli.com.br"
-              >
-                <FaUserAstronaut />
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="footer-item">
-          <div>
-            <p>
-              2020 ©{' '}
-              <a href="https://chignolli.com.br">Chignolli Desenvolvimento</a>
-            </p>
-          </div>
-        </div>
-        <div className="footer-item">
-          <h4>Open Source Projetct</h4>
-          <ul>
-            <li>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Repositório"
-                href="https://github.com/MatheusChignolli/covid-19"
-              >
-                <FaGithub />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </footer>
+    <Credits>
+      <IconLink
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Github"
+        href="https://github.com/MatheusChignolli/covid-19"
+      >
+        <FaGithub />
+      </IconLink>
+      <IconLink
+        target="_blank"
+        rel="noopener noreferrer"
+        title="LinkedIn"
+        href="https://www.linkedin.com/in/matheus-richard-chignolli-a0115b155/"
+      >
+        <FaLinkedin />
+      </IconLink>
+      <IconLink
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Site"
+        href="https://chignolli.com.br"
+      >
+        <FaUserAstronaut />
+      </IconLink>
+      <Copyright>
+        2020 ©{' '}
+        <Link href="https://chignolli.com.br">Chignolli Desenvolvimento</Link>
+      </Copyright>
+    </Credits>
   )
 }
 

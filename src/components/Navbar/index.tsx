@@ -1,25 +1,31 @@
 import React, { FC } from 'react'
-import { Link } from 'react-router-dom'
-import './styles.sass'
+import { useLocation } from 'react-router-dom'
+import { Image, Link, Nav, Title } from './styles'
 
 const Navbar: FC = () => {
+  const { pathname } = useLocation()
+
+  const links = [
+    {
+      to: '/',
+      label: 'Brasil',
+    },
+    {
+      to: '/world',
+      label: 'Mundo',
+    },
+  ]
+
   return (
-    <nav>
-      <div className="top-title">
-        <img src="/images/covid-logo.png" alt="teste" />
-        <h2> Relatório Covid-19</h2>
-      </div>
-      <div className="top-menu">
-        <ul>
-          <li>
-            <Link to="/">Brasil</Link>
-          </li>
-          <li>
-            <Link to="/world">Mundo</Link>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <Nav>
+      <Image src="/images/covid-logo.png" alt="Logo Covid" />
+      <Title>Relatório Covid-19</Title>
+      {links.map(({ to, label }, i) => (
+        <Link key={`link-${i}`} to={to} active={to === pathname}>
+          {label}
+        </Link>
+      ))}
+    </Nav>
   )
 }
 
