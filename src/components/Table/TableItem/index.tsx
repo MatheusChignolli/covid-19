@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import NumberFormatter from '../../../services/Methods/NumberFormatter'
-import { githubApi } from '../../../services/api'
-
-// Importando Interfaces
-import { CovidData } from '../../../interfaces/CovidData'
+import NumberFormatter from 'services/Methods/NumberFormatter'
+import { githubApi } from 'services/api'
+import { CovidData } from 'interfaces/CovidData'
 
 const TableItem: React.FC<CovidData> = (props) => {
   const [stateFlag, setStateFlag] = useState<string>()
@@ -35,7 +33,7 @@ const TableItem: React.FC<CovidData> = (props) => {
 
   function updateIsSelected() {
     const isSelectedItems = document.getElementsByClassName('selected')
-    for (var i = 0; i < isSelectedItems.length; i++) {
+    for (let i = 0; i < isSelectedItems.length; i++) {
       isSelectedItems[i].classList.remove('selected')
     }
     const isSelectedItem = document.getElementById('table-item-' + uf)

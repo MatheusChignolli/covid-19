@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 import {
   getBrazilStatesCases,
   getBrazilCases,
-} from '../../controllers/CovidController'
-import Table from '../../components/Table'
-import Header from '../../components/Header'
-import { CovidData } from '../../interfaces/CovidData'
-import { CountriesCovidData } from '../../interfaces/CountriesCovidData'
+} from 'controllers/CovidController'
+import { Table, Header } from 'components'
+import { CovidData } from 'interfaces/CovidData'
+import { CountriesCovidData } from 'interfaces/CountriesCovidData'
 
 const Home: React.FC = () => {
   const [allCovidData, setAllCovidaData] = useState<CovidData[]>([])

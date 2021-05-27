@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { dateFormatter } from '../../services/Methods/DateFormatter'
-import numberFormatter from '../../services/Methods/NumberFormatter'
 import CircularProgress from '@material-ui/core/CircularProgress'
-
-import { PageHeader } from '../../interfaces/PageHeader'
-
+import { dateFormatter } from 'services/Methods/DateFormatter'
+import numberFormatter from 'services/Methods/NumberFormatter'
+import { PageHeader } from './interfaces'
 import './styles.sass'
 
 const Header: React.FC<PageHeader> = (props) => {

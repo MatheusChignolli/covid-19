@@ -1,4 +1,4 @@
-import { CountriesCovidData } from './CountriesCovidData'
+import { CountriesCovidData } from 'interfaces/CountriesCovidData'
 
 export interface TableCountriesCovidData {
   tableTitle: string

@@ -1,10 +1,10 @@
 import React, { ChangeEvent, useState, useEffect } from 'react'
 import _ from 'lodash'
-import { sortByBrazilStateName } from '../../services/Methods/ArrayFormatter'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { TableCovidData } from '../../interfaces/TableCovidData'
-import { CovidData } from '../../interfaces/CovidData'
-import { ChartData } from '../../interfaces/ChartData'
+import { sortByBrazilStateName } from 'services/Methods/ArrayFormatter'
+import { TableCovidData } from 'interfaces/TableCovidData'
+import { CovidData } from 'interfaces/CovidData'
+import { ChartData } from 'interfaces/ChartData'
 import TableItem from './TableItem'
 import Chart from '../Chart'
 import './styles.sass'
@@ -44,11 +44,11 @@ const Table: React.FC<TableCovidData> = (props) => {
   }, [covidData])
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
-    var inputText = e.target.value
+    let inputText = e.target.value
     setFilteredWorld(inputText)
     inputText = _.kebabCase(inputText)
 
-    var filteredData = covidData.filter((obj) =>
+    const filteredData = covidData.filter((obj) =>
       _.kebabCase(obj.state).includes(inputText)
     )
 

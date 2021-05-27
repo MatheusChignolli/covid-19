@@ -1,7 +1,7 @@
 import React from 'react'
 import { CanvasJSChart } from 'canvasjs-react-charts'
-import { setCountryFlag } from '../../services/Methods/CountryFlag'
-import { ChartData } from '../../interfaces/ChartData'
+import { setCountryFlag } from 'services/Methods/CountryFlag'
+import { ChartData } from 'interfaces/ChartData'
 import './styles.sass'
 
 const Chart: React.FC<ChartData> = (props) => {

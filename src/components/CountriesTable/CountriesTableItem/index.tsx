@@ -1,10 +1,9 @@
 import React from 'react'
 import _ from 'lodash'
-import NumberFormatter from '../../../services/Methods/NumberFormatter'
-import { TextAbstract } from '../../../services/Methods/TextFormatter'
-import { setCountryFlag } from '../../../services/Methods/CountryFlag'
-
-import { CountriesCovidData } from '../../../interfaces/CountriesCovidData'
+import NumberFormatter from 'services/Methods/NumberFormatter'
+import { TextAbstract } from 'services/Methods/TextFormatter'
+import { setCountryFlag } from 'services/Methods/CountryFlag'
+import { CountriesCovidData } from 'interfaces/CountriesCovidData'
 
 const CountriesTableItem: React.FC<CountriesCovidData> = ({
   cases,
