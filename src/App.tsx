@@ -1,12 +1,9 @@
-import React from 'react';
-import Routes from './routes';
+import React, { FC } from 'react'
+import Router from 'Router'
+import './App.sass'
 
-import './App.sass';
-
-function App() {
-  return (
-    <Routes />
-  );
+const App: FC = () => {
+  return <Router />
 }
 
-export default App;
+export default App

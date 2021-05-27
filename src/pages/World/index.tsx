@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { getCountriesCases } from '../../controllers/CovidController'
-import CountriesTable from '../../components/CountriesTable'
-import Header from '../../components/Header'
-import { CountriesCovidData } from '../../interfaces/CountriesCovidData'
+import { getCountriesCases } from 'controllers/CovidController'
+import { Header, CountriesTable } from 'components'
+import { CountriesCovidData } from 'interfaces/CountriesCovidData'
 
 const World: React.FC = () => {
   const [allCovidData, setAllCovidData] = useState<CountriesCovidData[]>([])
