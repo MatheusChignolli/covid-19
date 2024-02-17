@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { value countryFlagsUrl } from '../api'
+import { countryFlagsUrl } from '../api'
 
 const countries = [
   ['AF', 'Afghanistan'],
@@ -63,7 +63,7 @@ const countries = [
   //
   ['CK', 'Cook Islands'],
   ['CR', 'Costa Rica'],
-  ['CI', "Cote D'Ivoire"],
+  ['CI', 'Cote D\'Ivoire'],
   ['HR', 'Croatia'],
   ['CU', 'Cuba'],
   ['CY', 'Cyprus'],
@@ -300,8 +300,7 @@ export function setCountryFlag(
       countryNameFromObj === countryNameFromFun ||
       countryCodeFromObj === countryNameFromFun
     ) {
-      flagUrl =
-        countryFlagsUrl + countryCodeFromObj.toUpperCase() + '/flat/64.png'
+      flagUrl = countryFlagsUrl + countryCodeFromObj.toUpperCase() + '/flat/64.png'
     }
   })
 
