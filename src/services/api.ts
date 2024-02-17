@@ -6,7 +6,7 @@ export const api = axios.create({
 
 export const githubApi = 'https://devarthurribeiro.github.io/'
 
-export const countryFlagsUrl = 'https://www.countryflags.io/'
+export const countryFlagsUrl = 'https://flagsapi.com/'
 
 // import API from "./API";
 
