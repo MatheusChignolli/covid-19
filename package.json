@@ -52,7 +52,7 @@
     "url-loader": "^4.1.0",
     "webpack": "4.42.0",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "3.10.3"
+    "webpack-dev-server": "5.2.0"
   },
   "prettier": "./.prettierrc.json",
   "scripts": {
