@@ -9,7 +9,7 @@
     "axios": "^0.21.1",
     "canvasjs-react-charts": "^1.0.5",
     "eslint": "^9.15.0",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "node-sass": "^9.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
